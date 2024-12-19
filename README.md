@@ -26,3 +26,8 @@ This Streamlit app provides a comprehensive solution for interactive data cleani
 - **[Pandas](https://pandas.pydata.org/)**: For data manipulation and analysis.
 
   ---
+
+  ## 📝 **Future Enhancements**
+- Add support for more file formats.
+- Include advanced visualization options (e.g., histograms, pie charts).
+- Detect outliers.
