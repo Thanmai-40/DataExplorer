@@ -118,7 +118,7 @@ def fill_missing_values(df):
 
     return df
 
-def visualize_data(chart_type, numeric_columns, categorical_columns, datetime_columns):
+def visualize_data(df, chart_type, numeric_columns, categorical_columns, datetime_columns):
     if chart_type == 'Line Chart':
         numeric_and_categorical = numeric_columns + categorical_columns
         x_column = st.selectbox("Select x-axis column", options=numeric_and_categorical)
@@ -127,7 +127,7 @@ def visualize_data(chart_type, numeric_columns, categorical_columns, datetime_co
         if st.button("Generate Plot"):
             return st.line_chart(df.set_index(x_column)[y_column])
 
-    elif chart_type == 'Bar Chart':
+    if chart_type == 'Bar Chart':
         categorical_and_datetime = categorical_columns + datetime_columns
         x_column = st.selectbox("Select x-axis column", options=categorical_and_datetime)
         y_column = st.selectbox("Select y-axis column", options=numeric_columns)
@@ -135,7 +135,7 @@ def visualize_data(chart_type, numeric_columns, categorical_columns, datetime_co
         if st.button("Generate Plot"):
             return st.bar_chart(df.set_index(x_column)[y_column])
 
-    elif chart_type == 'Area Chart':
+    if chart_type == 'Area Chart':
         categorical_and_datetime = categorical_columns + datetime_columns
         x_column = st.selectbox("Select x-axis column", options=categorical_and_datetime)
         y_column = st.selectbox("Select y-axis column", options=numeric_columns)
@@ -143,7 +143,7 @@ def visualize_data(chart_type, numeric_columns, categorical_columns, datetime_co
         if st.button("Generate Plot"):
             return st.area_chart(df.set_index(x_column)[y_column])
 
-    elif chart_type == 'Scatter Plot':
+    if chart_type == 'Scatter Plot':
         x_column = st.selectbox("Select x-axis column", options=numeric_columns)
         y_column = st.selectbox("Select y-axis column", options=numeric_columns)
 
@@ -234,7 +234,7 @@ if uploaded_file is not None:
     st.subheader("Visualizing the Data")
     chart_options = ['Line Chart', 'Bar Chart', 'Area Chart', 'Scatter Plot']
     chart_type = st.selectbox("Select the Chart Type",options=chart_options, index=None)
-    visualization = visualize_data(chart_type, numeric_columns, categorical_columns, datetime_columns)
+    visualization = visualize_data(df, chart_type, numeric_columns, categorical_columns, datetime_columns)
 
 else:
     st.write("Waiting for file upload...")
